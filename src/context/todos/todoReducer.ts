@@ -8,7 +8,7 @@ export type TodoAction =
   | { type: "ADD_TODO"; payload: string }
   | { type: "TOGGLE_TODO"; payload: number }
   | { type: "DELETE_TODO"; payload: number }
-  | { type: "CLEAR_TODOS" };
+  | { type: "CLEAR_COMPLETED_TODOS" };
 
 export function todoReducer(state: Todo[], action: TodoAction): Todo[] {
   switch (action.type) {
@@ -25,8 +25,8 @@ export function todoReducer(state: Todo[], action: TodoAction): Todo[] {
       );
     case "DELETE_TODO":
       return state.filter((todo) => todo.id !== action.payload);
-    case "CLEAR_TODOS":
-      return [];
+    case "CLEAR_COMPLETED_TODOS":
+      return state.filter((todo) => todo.completed === false);
     default:
       return state;
   }
