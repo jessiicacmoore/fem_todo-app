@@ -1,11 +1,15 @@
-import { ThemeProvider } from "./context/ThemeContext";
 import Header from "./components/Header";
+import ToDoList from "./components/ToDoList";
+import AppProvider from "./context/AppProvider";
 
 function App() {
   return (
-    <ThemeProvider>
+    <AppProvider>
       <Header />
-    </ThemeProvider>
+      <main role="main">
+        <ToDoList />
+      </main>
+    </AppProvider>
   );
 }
 
