@@ -1,4 +1,7 @@
 /** @type {import('tailwindcss').Config} */
+
+const defaultTheme = require("tailwindcss/defaultTheme");
+
 export default {
   darkMode: "selector",
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
@@ -33,6 +36,9 @@ export default {
             500: "hsl(237, 14%, 26%)", // Very Dark Grayish Blue (slightly darker)
           },
         },
+      },
+      fontFamily: {
+        sans: ['"Josefin Sans"', ...defaultTheme.fontFamily.sans],
       },
     },
   },
