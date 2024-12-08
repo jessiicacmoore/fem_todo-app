@@ -1,11 +1,12 @@
 import { useTodos } from "../hooks/useTodos";
+import ToDoItem from "./ToDoItem";
 
 function ToDoList() {
   const { todos } = useTodos();
   return (
-    <ul>
+    <ul className="bg-light-gray-100">
       {todos.map((todo) => (
-        <p>{todo.text}</p>
+        <ToDoItem todo={todo} />
       ))}
     </ul>
   );
