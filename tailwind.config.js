@@ -12,8 +12,13 @@ export default {
         "hero-mobile-dark": "url('/src/assets/images/bg-mobile-dark.jpg')",
         "hero-desktop-light": "url('/src/assets/images/bg-desktop-light.jpg')",
         "hero-desktop-dark": "url('/src/assets/images/bg-desktop-dark.jpg')",
+        "check-gradient":
+          "linear-gradient(to bottom right, hsl(192, 100%, 67%), hsl(280, 87%, 65%))",
       },
       colors: {
+        primary: {
+          brightBlue: "hsl(220, 98%, 61%)", // Bright Blue
+        },
         light: {
           gray: {
             100: "hsl(0, 0%, 98%)", // Very Light Gray

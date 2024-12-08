@@ -4,7 +4,7 @@ import ToDoItem from "./ToDoItem";
 function ToDoList() {
   const { todos } = useTodos();
   return (
-    <ul className="bg-light-gray-100">
+    <ul className="-mx-4 -mt-4">
       {todos.map((todo) => (
         <ToDoItem todo={todo} />
       ))}

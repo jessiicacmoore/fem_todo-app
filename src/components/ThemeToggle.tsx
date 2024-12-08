@@ -17,11 +17,11 @@ function ThemeToggle() {
       title={isLightTheme ? "Switch to dark theme" : "Switch to light theme"}
     >
       <img
-        src={isLightTheme ? iconSun : iconMoon}
+        src={isLightTheme ? iconMoon : iconSun}
         alt={
           isLightTheme
-            ? "Sun icon representing light theme"
-            : "Moon icon representing dark theme"
+            ? "Moon icon representing dark theme"
+            : "Sun icon representing light theme"
         }
       />
     </button>
