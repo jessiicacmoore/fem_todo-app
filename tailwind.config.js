@@ -4,6 +4,12 @@ export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
     extend: {
+      backgroundImage: {
+        "hero-mobile-light": "url('/src/assets/images/bg-mobile-light.jpg')",
+        "hero-mobile-dark": "url('/src/assets/images/bg-mobile-dark.jpg')",
+        "hero-desktop-light": "url('/src/assets/images/bg-desktop-light.jpg')",
+        "hero-desktop-dark": "url('/src/assets/images/bg-desktop-dark.jpg')",
+      },
       colors: {
         light: {
           gray: {
