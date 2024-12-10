@@ -1,10 +1,12 @@
+import { FILTERS } from "../constants/filters";
+import { FilterType } from "../types/todos";
 import { useTodos } from "../hooks/useTodos";
 import FilterButton from "./ui/FilterButton";
 
 function ToDoFilter() {
   const { filter, dispatch } = useTodos();
 
-  function handleFilterChange(newFilter: "all" | "active" | "completed") {
+  function handleFilterChange(newFilter: FilterType) {
     dispatch({ type: "SET_FILTER", payload: newFilter });
   }
 
@@ -17,18 +19,18 @@ function ToDoFilter() {
       >
         <FilterButton
           label="All"
-          isActive={filter === "all"}
-          onClick={() => handleFilterChange("all")}
+          isActive={filter === FILTERS.ALL}
+          onClick={() => handleFilterChange(FILTERS.ALL)}
         />
         <FilterButton
           label="Active"
-          isActive={filter === "active"}
-          onClick={() => handleFilterChange("active")}
+          isActive={filter === FILTERS.ACTIVE}
+          onClick={() => handleFilterChange(FILTERS.ACTIVE)}
         />
         <FilterButton
           label="Completed"
-          isActive={filter === "completed"}
-          onClick={() => handleFilterChange("completed")}
+          isActive={filter === FILTERS.COMPLETED}
+          onClick={() => handleFilterChange(FILTERS.COMPLETED)}
         />
       </div>
       <div aria-live="polite" className="sr-only">

@@ -1,12 +1,8 @@
-import React, { createContext, useReducer, useEffect, ReactNode } from "react";
-import { todoReducer, Todo, TodoAction, TodoState } from "./todoReducer";
+import { createContext, useReducer, useEffect, ReactNode } from "react";
+import { todoReducer } from "./todoReducer";
 import { defaultTodos } from "../../constants/defaultTodos";
-
-type TodoContextType = {
-  todos: Todo[];
-  filter: "all" | "active" | "completed";
-  dispatch: React.Dispatch<TodoAction>;
-};
+import { Todo, TodoState, TodoContextType } from "../../types/todos";
+import { FILTERS } from "../../constants/filters";
 
 export const TodoContext = createContext<TodoContextType | undefined>(
   undefined,
@@ -19,7 +15,7 @@ function getInitialTodos(): Todo[] {
 
 const initialState: TodoState = {
   todos: getInitialTodos(),
-  filter: "all",
+  filter: FILTERS.ALL,
 };
 
 export function TodoProvider({ children }: { children: ReactNode }) {

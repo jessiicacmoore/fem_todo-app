@@ -1,20 +1,14 @@
-import React, { createContext, useEffect, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 import { THEME } from "../../constants/theme";
-
-type ThemeType = (typeof THEME)[keyof typeof THEME];
-
-type ThemeContextType = {
-  themeState: ThemeType;
-  toggleTheme: () => void;
-};
+import {
+  ThemeType,
+  ThemeContextType,
+  ThemeProviderProps,
+} from "../../types/theme";
 
 export const ThemeContext = createContext<ThemeContextType | undefined>(
   undefined,
 );
-
-type ThemeProviderProps = {
-  children: React.ReactNode;
-};
 
 export function ThemeProvider({ children }: ThemeProviderProps) {
   const [themeState, setThemeState] = useState<ThemeType>(
