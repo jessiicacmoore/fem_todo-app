@@ -10,7 +10,7 @@ function App() {
   return (
     <AppProvider>
       <Header />
-      <main role="main" className="-mt-24">
+      <main role="main" className="-mt-32">
         <Container>
           <SectionWrapper id="todo-form" className="py-0">
             <NewToDoForm />

@@ -8,7 +8,7 @@ type ContainerProps = {
 
 function Container({ children, className = "", ...props }: ContainerProps) {
   return (
-    <div className={classNames("container mx-auto px-6", className)} {...props}>
+    <div className={classNames("mx-auto max-w-3xl px-6", className)} {...props}>
       {children}
     </div>
   );
