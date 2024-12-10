@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useTodos } from "../hooks/useTodos";
-import CheckCircle from "./ui/checkCircle";
+import CheckCircle from "./ui/CheckCircle";
 import FloatingLabelInput from "./ui/FloatingLabelInput";
 
 const INPUT_ID = "new-todo-input";

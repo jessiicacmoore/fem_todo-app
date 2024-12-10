@@ -1,4 +1,4 @@
-import { Todo } from "../context/todos/todoReducer";
+import { Todo } from "../types/todos";
 import { useTodos } from "../hooks/useTodos";
 import crossIcon from "../assets/images/icon-cross.svg";
 
@@ -15,6 +15,7 @@ function ToDoDeleteButton({ todo }: ToDoItemProps) {
       type="button"
       aria-label={`Delete ${completed ? "complete" : "incomplete"} todo: ${text}`}
       onClick={() => dispatch({ type: "DELETE_TODO", payload: id })}
+      className="min-w-6"
     >
       <img src={crossIcon} />
     </button>

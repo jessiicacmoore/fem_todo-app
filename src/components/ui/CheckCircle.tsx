@@ -3,9 +3,10 @@ import iconCheck from "../../assets/images/icon-check.svg";
 
 type CheckCircleProps = {
   completed?: boolean;
+  className?: string;
 };
 
-function CheckCircle({ completed = false }: CheckCircleProps) {
+function CheckCircle({ completed = false, }: CheckCircleProps) {
   const circleClasses = classNames(
     "h-6 w-6 rounded-full border border-light-gray-200 grid place-items-center dark:border-dark-gray-400 relative",
     { "bg-check-gradient": completed },
