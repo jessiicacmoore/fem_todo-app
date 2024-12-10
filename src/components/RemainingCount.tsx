@@ -1,15 +1,17 @@
 import { useTodos } from "../hooks/useTodos";
+import { formatCountMessage } from "../utils/todos";
 
 function RemainingCount() {
   const { todos } = useTodos();
 
   const complete = todos.filter((todo) => todo.completed).length;
-  const countMessage = `${complete} out of ${todos.length} complete.`;
+  const remaining = todos.length - complete;
 
   return (
     <div aria-live="polite">
-      <p className="flex flex-col" key={countMessage}>
-        {countMessage}
+      <p key={complete}>{formatCountMessage(remaining, "left")}</p>
+      <p key={remaining} className="sr-only">
+        {formatCountMessage(complete, "complete")}
       </p>
     </div>
   );

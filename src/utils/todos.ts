@@ -11,3 +11,7 @@ export function filterTodos(todos: Todo[], filter: FilterType): Todo[] {
       return todos;
   }
 }
+
+export function formatCountMessage(count: number, label: string) {
+  return `${count} ${count === 1 ? "item" : "items"} ${label}`;
+}
