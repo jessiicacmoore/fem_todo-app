@@ -34,7 +34,7 @@ function NewToDoForm() {
         changeHandler={handleChange}
         className="flex-grow"
       >
-        Create a new todo<span aria-hidden>...</span>
+        Create a new todo...
       </FloatingLabelInput>
       <button
         type="submit"

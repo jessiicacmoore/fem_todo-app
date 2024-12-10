@@ -29,7 +29,6 @@ function FloatingLabelInput({
         value={value}
         onChange={(e) => changeHandler(e.target.value)}
         required
-        aria-labelledby={id}
         className="peer block w-full bg-transparent py-4 dark:text-dark-gray-100"
         {...props}
       />
