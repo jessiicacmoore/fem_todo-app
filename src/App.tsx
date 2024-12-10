@@ -23,6 +23,11 @@ function App() {
           </SectionWrapper>
         </Container>
       </main>
+      <footer className="my-16 text-center text-light-gray-300 dark:text-dark-gray-300">
+        <Container>
+          <p>Drag and drop to reorder list</p>
+        </Container>
+      </footer>
     </AppProvider>
   );
 }
