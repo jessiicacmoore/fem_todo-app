@@ -4,6 +4,7 @@ import SectionWrapper from "./components/ui/SectionWrapper";
 import Header from "./components/Header";
 import ToDoList from "./components/ToDoList";
 import NewToDoForm from "./components/NewToDoForm";
+import ToDoFilter from "./components/ToDoFilter";
 
 function App() {
   return (
@@ -17,8 +18,8 @@ function App() {
           <SectionWrapper id="todo-list">
             <ToDoList />
           </SectionWrapper>
-          <SectionWrapper id="todo-filters">
-            <p>Filters</p>
+          <SectionWrapper id="todo-filters" className="md:hidden">
+            <ToDoFilter />
           </SectionWrapper>
         </Container>
       </main>
