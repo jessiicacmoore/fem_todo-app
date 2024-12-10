@@ -14,8 +14,8 @@ export function todoReducer(state: Todo[], action: TodoAction): Todo[] {
   switch (action.type) {
     case "ADD_TODO":
       return [
-        ...state,
         { id: Date.now(), text: action.payload, completed: false },
+        ...state,
       ];
     case "TOGGLE_TODO":
       return state.map((todo) =>
