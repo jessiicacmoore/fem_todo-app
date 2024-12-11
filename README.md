@@ -6,17 +6,11 @@ This is a solution to the [Todo app challenge on Frontend Mentor](https://www.fr
 
 - [Overview](#overview)
   - [The challenge](#the-challenge)
-  - [Screenshot](#screenshot)
   - [Links](#links)
 - [My process](#my-process)
   - [Built with](#built-with)
   - [What I learned](#what-i-learned)
   - [Continued development](#continued-development)
-  - [Useful resources](#useful-resources)
-- [Author](#author)
-- [Acknowledgments](#acknowledgments)
-
-**Note: Delete this note and update the table of contents based on what sections you keep.**
 
 ## Overview
 
@@ -34,85 +28,80 @@ Users should be able to:
 - Toggle light and dark mode
 - **Bonus**: Drag and drop to reorder items on the list
 
-### Screenshot
-
-![](./screenshot.jpg)
-
-Add a screenshot of your solution. The easiest way to do this is to use Firefox to view your project, right-click the page and select "Take a Screenshot". You can choose either a full-height screenshot or a cropped one based on how long the page is. If it's very long, it might be best to crop it.
-
-Alternatively, you can use a tool like [FireShot](https://getfireshot.com/) to take the screenshot. FireShot has a free option, so you don't need to purchase it. 
-
-Then crop/optimize/edit your image however you like, add it to your project, and update the file path in the image above.
-
-**Note: Delete this note and the paragraphs above when you add your screenshot. If you prefer not to add a screenshot, feel free to remove this entire section.**
-
 ### Links
 
-- Solution URL: [Add solution URL here](https://your-solution-url.com)
-- Live Site URL: [Add live site URL here](https://your-live-site-url.com)
+- Live Site URL: [Add live site URL here](https://jessthedev-fem-todo-challenge.netlify.app/)
 
 ## My process
 
 ### Built with
 
-- Semantic HTML5 markup
-- CSS custom properties
-- Flexbox
-- CSS Grid
-- Mobile-first workflow
-- [React](https://reactjs.org/) - JS library
-- [Next.js](https://nextjs.org/) - React framework
-- [Styled Components](https://styled-components.com/) - For styles
-
-**Note: These are just examples. Delete this note and replace the list above with your own choices**
+- React
+- TypeScript
+- Tailwind CSS
+- Context API and useReducer for state management
+- hello-pangea/dnd for drag and drop
 
 ### What I learned
 
-Use this section to recap over some of your major learnings while working through this project. Writing these out and providing code samples of areas you want to highlight is a great way to reinforce your own knowledge.
+While building this todo app, I gained valuable insights into accessibility, advanced TypeScript usage, and inclusive design considerations.
 
-To see how you can add code snippets, see below:
+#### Advanced Typescript Usage
+I also implemented some advanced TypeScript techniques, such as using as const to create a readonly object for the filter options. This ensures TypeScript infers literal types for the filter values, preventing accidental changes and enabling better type safety.
 
-```html
-<h1>Some HTML code I'm proud of</h1>
+Here’s an example of how I defined the filters:
+```ts
+// src/constants
+export const FILTERS = {
+  ALL: "all",
+  ACTIVE: "active",
+  COMPLETED: "completed",
+} as const;
+
+// src/types
+export type FilterType = (typeof FILTERS)[keyof typeof FILTERS];
 ```
-```css
-.proud-of-this-css {
-  color: papayawhip;
-}
-```
-```js
-const proudOfThisFunc = () => {
-  console.log('🎉')
-}
-```
 
-If you want more help with writing markdown, we'd recommend checking out [The Markdown Guide](https://www.markdownguide.org/) to learn more.
+#### VoiceOver and `aria-live="polite"`
+One of the challenges I encountered was ensuring that VoiceOver would read out the entire sentence when the number of items in the list changed (e.g., "3 items remaining"), rather than just the specific number that updated. By default, VoiceOver only announces the changed portion of the text within an `aria-live` region. To work around this, I had to "trick" the browser into re-rendering the entire element by applying a `key` attribute.
 
-**Note: Delete this note and the content within this section and replace with your own learnings.**
+Here’s an example of how I approached this:
+
+```jsx
+<div aria-live="polite">
+  <p key={complete}>{formatCountMessage(remaining, "left")}</p>
+  <p key={remaining} className="sr-only">
+    {formatCountMessage(complete, "complete")}
+  </p>
+</div>
+```
+#### Inclusive Design: Adding a Submit Button
+Another accessibility consideration arose in the design of the new todo form. Initially, the form relied on a "submit on enter" approach, where pressing the `Enter` key would add a new task. While this works well for tech-savvy users, it is less intuitive for users unfamiliar with keyboard interactions.
+
+While relying solely on the Enter key is not a direct violation of WCAG standards, it can still create barriers for users with disabilities or limited technical experience. Adding a visible, interactive button makes the form more accessible and user-friendly for a wider range of users.
 
 ### Continued development
 
-Use this section to outline areas that you want to continue focusing on in future projects. These could be concepts you're still not completely comfortable with or techniques you found useful that you want to refine and perfect.
+This project became much more robust than I initially anticipated for a simple too app, which highlighted areas where I can improve, particularly around code organization and architecture. As the project grew in complexity, it became clear that better planning and structure would have made the codebase easier to scale and maintain. Going forward, I want to focus on the following areas:
 
-**Note: Delete this note and the content within this section and replace with your own plans for continued development.**
+#### 1. **Code Architecture and Organization**
+   - I will explore design patterns like the **Component-Container pattern** or **state management techniques** to keep components cleaner and more focused on a single responsibility.
+   - Breaking down larger components into smaller, reusable ones will improve maintainability as projects grow.
+   - Researching and applying **Atomic Design principles** in UI component organization will also be a priority.
 
-### Useful resources
+#### 2. **State Management Best Practices**
+   - While this project was relatively simple in terms of state management, as features grew, managing state became trickier. I want to refine my understanding of React state management tools like **Context API** or libraries like **Zustand** and **Redux Toolkit** for more scalable solutions.
 
-- [Example resource 1](https://www.example.com) - This helped me for XYZ reason. I really liked this pattern and will use it going forward.
-- [Example resource 2](https://www.example.com) - This is an amazing article which helped me finally understand XYZ. I'd recommend it to anyone still learning this concept.
+#### 3. **Advanced TypeScript Patterns**
+   - I found `as const` and indexed types extremely useful in this project, but I want to dive deeper into more advanced TypeScript concepts, such as:
+     - Utility types for code reusability
+     - Generics to make components and functions more flexible and type-safe
+     - Better type inference strategies to reduce redundancy and improve developer experience.
 
-**Note: Delete this note and replace the list above with resources that helped you during the challenge. These could come in handy for anyone viewing your solution or for yourself when you look back on this project in the future.**
+#### 4. **Accessibility and Testing**
+   - While I made improvements for screen readers like VoiceOver, I want to incorporate more **automated accessibility testing** tools, such as **axe-core** or **Lighthouse**, into my workflow to identify and resolve issues earlier.
+   - Writing unit and integration tests using **Jest** and **React Testing Library** to ensure accessibility changes don’t inadvertently break functionality.
 
-## Author
-
-- Website - [Add your name here](https://www.your-site.com)
-- Frontend Mentor - [@yourusername](https://www.frontendmentor.io/profile/yourusername)
-- Twitter - [@yourusername](https://www.twitter.com/yourusername)
-
-**Note: Delete this note and add/remove/edit lines above based on what links you'd like to share.**
-
-## Acknowledgments
-
-This is where you can give a hat tip to anyone who helped you out on this project. Perhaps you worked in a team or got some inspiration from someone else's solution. This is the perfect place to give them some credit.
-
-**Note: Delete this note and edit this section's content as necessary. If you completed this challenge by yourself, feel free to delete this section entirely.**
+#### 5. **Planning and Scalability**
+   - Before starting future projects, I want to dedicate more time to planning the project structure, components, and features. Creating an outline or component hierarchy diagram can help me anticipate complexity and organize my work effectively.
+   - I also plan to research and apply **scalable file structures** for React projects, such as grouping components, hooks, utilities, and styles for better separation of concerns.
