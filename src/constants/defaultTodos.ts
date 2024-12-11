@@ -1,4 +1,4 @@
-import { Todo } from "../context/todos/todoReducer";
+import { Todo } from "../types/todos";
 
 export const defaultTodos: Todo[] = [
   { id: 1, text: "Learn React", completed: false },

@@ -1,6 +1,6 @@
 import React from "react";
 import classNames from "classnames";
-import { Todo } from "../context/todos/todoReducer";
+import { Todo } from "../types/todos";
 import ToDoDeleteButton from "./ToDoDeleteButton";
 import ToDoToggleButton from "./ToDoToggleButton";
 
